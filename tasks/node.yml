@@ -4,6 +4,8 @@
     state: present
   tags:
     - nodejs
+    - install
+    - perfomatix
 
 - name: install n
   npm:
@@ -11,12 +13,15 @@
     global: true
   tags:
     - nodejs
+    - install
+    - perfomatix
 
 - name: install latest node
   changed_when: false
   ansible.builtin.command: n latest
   tags:
     - nodejs
+    - install
 
 - name: install pnpm
   npm:
@@ -24,15 +29,17 @@
     global: true
   tags:
     - nodejs
+    - install
 
-- name: install node 12.14.0
+- name: install node 12.14.0 for perfomatix
   changed_when: false
   ansible.builtin.command: n 12.14.0
   tags:
-    - nodejs
+    - perfomatix
 
 - name: install node lts
   changed_when: false
   ansible.builtin.command: n lts
   tags:
     - nodejs
+    - install

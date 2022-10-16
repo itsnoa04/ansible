@@ -6,6 +6,8 @@
     - zsh
     - starship
     - dotfiles
+    - install
+    - perfomatix
 
 - name: Grant execute permissions to Starship install script
   ansible.builtin.file:
@@ -15,6 +17,8 @@
     - zsh
     - starship
     - dotfiles
+    - install
+    - perfomatix
 
 - name: Install Starship prompt
   ansible.builtin.command: /tmp/starship-install.sh -y
@@ -24,3 +28,5 @@
     - zsh
     - starship
     - dotfiles
+    - install
+    - perfomatix

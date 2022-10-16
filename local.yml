@@ -9,7 +9,11 @@
         - update
   vars:
     user: "{{ansible_user_id}}"
+    source_key: "./.ssh/id_rsa"
+    dist_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   tasks:
+    - include: ./tasks/ssh.yml
     - include: ./tasks/zsh.yml
     - include: ./tasks/starship.yml
     - include: ./tasks/node.yml
+
