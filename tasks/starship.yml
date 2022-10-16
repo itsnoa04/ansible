@@ -1,0 +1,26 @@
+- name: Download Starship prompt
+  ansible.builtin.get_url:
+    url: https://starship.rs/install.sh
+    dest: /tmp/starship-install.sh
+  tags:
+    - zsh
+    - starship
+    - dotfiles
+
+- name: Grant execute permissions to Starship install script
+  ansible.builtin.file:
+    path: /tmp/starship-install.sh
+    mode: 0755
+  tags:
+    - zsh
+    - starship
+    - dotfiles
+
+- name: Install Starship prompt
+  ansible.builtin.command: /tmp/starship-install.sh -y
+  args:
+    creates: /usr/local/bin/starship
+  tags:
+    - zsh
+    - starship
+    - dotfiles

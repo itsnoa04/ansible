@@ -1,0 +1,38 @@
+- name: install node
+  apt:
+    name: [nodejs, npm]
+    state: present
+  tags:
+    - nodejs
+
+- name: install n
+  npm:
+    name: n
+    global: true
+  tags:
+    - nodejs
+
+- name: install latest node
+  changed_when: false
+  ansible.builtin.command: n latest
+  tags:
+    - nodejs
+
+- name: install pnpm
+  npm:
+    name: pnpm
+    global: true
+  tags:
+    - nodejs
+
+- name: install node 12.14.0
+  changed_when: false
+  ansible.builtin.command: n 12.14.0
+  tags:
+    - nodejs
+
+- name: install node lts
+  changed_when: false
+  ansible.builtin.command: n lts
+  tags:
+    - nodejs

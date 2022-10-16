@@ -1,0 +1,31 @@
+- name: Install Zsh
+  apt: name=zsh
+  tags:
+    - zsh
+    - dotfiles
+
+- name: Change default shell to Zsh
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
+  tags:
+    - zsh
+    - dotfiles
+
+- name: Install zsh plugin autoSuggestions
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: ~/.zsh/zsh-autosuggestions
+    version: master
+  tags:
+    - zsh
+    - zsh-autosuggestions
+
+- name: Install zsh plugin syntax highlighting
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: ~/.zsh/zsh-syntax-highlighting
+    version: master
+  tags:
+    - zsh
+    - zsh-syntax-highlighting
