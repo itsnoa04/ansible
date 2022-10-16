@@ -1,0 +1,30 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+  vars:
+  tasks:
+    - name: Install Zsh
+      apt: name=zsh
+      tags:
+      - zsh
+      - dotfiles
+
+    - name: Change default shell to Zsh
+      shell: chsh -s 'which zsh'
+      tags:
+      - zsh
+      - dotfiles
+
+    - name: Download Starship prompt
+      ansible.builtin.get_url:
+        url: 
+      tags:
+      - zsh
+      - starship
+
+    - name: Install zsh plugin autoSuggestions
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: ~/.zsh/zsh-autosuggestions
+    
+    
