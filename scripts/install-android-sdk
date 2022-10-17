@@ -1,0 +1,6 @@
+cd ~ 
+curl https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip -o /tmp/cmd-tools.zip
+mkdir -p android/cmdline-tools
+unzip -q -d android/cmdline-tools /tmp/cmd-tools.zip
+mv android/cmdline-tools/cmdline-tools android/cmdline-tools/latest
+rm /tmp/cmd-tools.zip 

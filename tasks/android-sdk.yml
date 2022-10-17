@@ -1,0 +1,48 @@
+- name: install openJDK 8
+  apt:
+    name: [openjdk-8-jdk-headless, gradle]
+  tags:
+    - java
+    - android
+    - install
+
+- name: export JAVA_HOME
+  changed_when: false
+  shell: echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/.bashrc
+  tags:
+    - java
+    - android
+    - install
+
+- name: install android sdk
+  changed_when: false
+  command: chmod +x ./scripts/install-android-sdk && ./scripts/install-android-sdk
+  tags:
+    - java
+    - android
+    - install
+
+- name: setup environment variables
+  changed_when: false
+  shell: echo "export ANDROID_HOME=$HOME/android" >> ~/.zshrc && echo "export ANDROID_SDK_ROOT=${ANDROID_HOME}" >> ~/.zshrc && echo "export PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${PATH}" >> ~/.zshrc
+  tags:
+    - java
+    - android
+    - install
+
+- name: accept android licenses
+  changed_when: false
+  shell: yes | sdkmanager --licenses
+  tags:
+    - java
+    - android
+    - install
+
+- name: install android sdk packages
+  changed_when: false
+  shell: sdkmanager --install "platform-tools" "platforms;android-30" "build-tools;30.0.3" "extras;android;m2repository" "extras;google;m2repository"
+  tags:
+    - java
+    - android
+    - install
+
