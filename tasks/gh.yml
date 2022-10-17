@@ -1,0 +1,5 @@
+- name: install github cli
+  shell: chmod +x ./scripts/installGh && ./scripts/installGh
+  tags:
+    - gh
+    - install

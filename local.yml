@@ -14,6 +14,7 @@
   tasks:
     - include: ./tasks/ssh.yml
     - include: ./tasks/zsh.yml
+    - include: ./tasks/gh.yml
     - include: ./tasks/starship.yml
     - include: ./tasks/node.yml
 
